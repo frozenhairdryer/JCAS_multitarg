@@ -27,11 +27,9 @@ Training and plotting can be done by running split_test.py. We recommend running
 Main Components are:
 
   * autoencoder_compare_cpr: evaluation script for sweeping number of samples
-
+  * set folder: pickled versions of trained autoencoders
   * Folder Autoencoder:
-
     * training_routine has training function which is described below
-
     * NN_classes has the following functions and classes:
       * Encoder
       * Decoder (Comm Receiver)
