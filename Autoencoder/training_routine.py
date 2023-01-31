@@ -27,7 +27,8 @@ def train_network(M=4,sigma_n=0.1,sigma_c=1,sigma_s=1,train_params=[50,100,0.01,
         "ESPRIT" -> use esprit algorithm instead of NN 
     plotting (bool): toggles Plotting of PDFs into folder /figures 
     """
-    encoding = ['counting', 'onehot'][0] 
+    encoding = ['counting', 'onehot'][0]
+    benchmark = 1 
     canc = 0
 
     if M.size()!=sigma_n.size():
@@ -359,7 +360,7 @@ def train_network(M=4,sigma_n=0.1,sigma_c=1,sigma_s=1,train_params=[50,100,0.01,
                 t_NN = torch.mean(t_NN.reshape(N_valid,cpr,max_target+1),1)
 
             benchmark_angle_nn = torch.zeros(N_valid,2,max_target).to(device)
-            if setbehaviour=="ESPRIT":
+            if setbehaviour=="ESPRIT" or benchmark==1:
                 for i in range(N_valid):
                     if target_labels[i]!=0:
                         c = received_rad[i*cpr:(i+1)*cpr,:]
