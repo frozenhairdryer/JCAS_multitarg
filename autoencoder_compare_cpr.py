@@ -43,12 +43,12 @@ target_ij += label_tensor[target_labels]
 
 angle_r = torch.zeros((N_valid,2), device=device)
 angle_r[:,0] = np.pi/180*(torch.rand(N_valid)*20+30)
-angle_r[:,1] = np.pi/180*(torch.rand(N_valid)*1+90) # between 90 and 100 deg
+angle_r[:,1] = np.pi/2 # irrelevant for one dimensional ULA at BS
 
 
 angle_t = torch.zeros((N_valid,2,num_targets_trained), device=device)#torch.deg2rad(torch.rand(N_valid)*40-20)
 angle_t[:,0,:] += np.pi/180*(torch.rand((N_valid,num_targets_trained))*40-20).to(device)
-angle_t[:,1,:] += np.pi/180*(torch.rand((N_valid,num_targets_trained))*10+80).to(device) # only one random thing since we add all values in ESPRIT
+angle_t[:,1,:] += np.pi/2 # irrelevant for one dimensional ULA at BS
 
 angle_t[:,0,:] *= target_ij
 angle_t[:,1,:] *= target_ij
